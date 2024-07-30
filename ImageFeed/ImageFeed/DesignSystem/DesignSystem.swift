@@ -1,0 +1,12 @@
+//
+//  DesignSystem.swift
+//  ImageFeed
+//
+//  Created by Moein Barzegaran on 7/30/24.
+//
+
+import Foundation
+
+enum DefaultSpacing {
+    static let space16: CGFloat = 16
+}
