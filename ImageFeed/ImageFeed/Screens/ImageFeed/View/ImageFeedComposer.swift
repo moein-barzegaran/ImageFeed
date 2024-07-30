@@ -14,9 +14,9 @@ struct ImageFeedComposer {
 
     private static func makeLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout(sectionProvider: { (sectionIndex, environment) -> NSCollectionLayoutSection? in
-            let itemsPerRow = sectionIndex + 3
+            let itemsPerRow = 2
             let fraction: CGFloat = 1 / CGFloat(itemsPerRow)
-            let inset: CGFloat = 2.5
+            let inset: CGFloat = 4
 
             // Item
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fraction), heightDimension: .fractionalHeight(1))
@@ -30,11 +30,6 @@ struct ImageFeedComposer {
             // Section
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
-
-            // Supplementary Item
-            let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
-            let headerItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: "header", alignment: .top)
-            section.boundarySupplementaryItems = [headerItem]
 
             return section
         })
