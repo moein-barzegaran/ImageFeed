@@ -17,6 +17,8 @@
 		50EAA4E12C58F54C003D755A /* ImageFeedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4E02C58F54C003D755A /* ImageFeedDataSource.swift */; };
 		50EAA4E42C58F592003D755A /* ImageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4E32C58F592003D755A /* ImageItemCell.swift */; };
 		50EAA4E82C58F61E003D755A /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4E72C58F61E003D755A /* ReuseIdentifier.swift */; };
+		50EAA4EC2C58FB7A003D755A /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4EB2C58FB7A003D755A /* ImageItem.swift */; };
+		50EAA4EE2C58FEF4003D755A /* ImageFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4ED2C58FEF4003D755A /* ImageFeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		50EAA4E02C58F54C003D755A /* ImageFeedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedDataSource.swift; sourceTree = "<group>"; };
 		50EAA4E32C58F592003D755A /* ImageItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItemCell.swift; sourceTree = "<group>"; };
 		50EAA4E72C58F61E003D755A /* ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
+		50EAA4EB2C58FB7A003D755A /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
+		50EAA4ED2C58FEF4003D755A /* ImageFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			children = (
 				50EAA4EA2C58F9DC003D755A /* App */,
 				50EAA4DB2C58F4FD003D755A /* Screens */,
+				50EAA4EF2C58FFD7003D755A /* NetworkLayer */,
 				50EAA4D62C58F28F003D755A /* DesignSystem */,
 				50EAA4E52C58F5F5003D755A /* Foundation */,
 				50EAA4CD2C58EC42003D755A /* LaunchScreen.storyboard */,
@@ -114,6 +119,7 @@
 		50EAA4DE2C58F51A003D755A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				50EAA4ED2C58FEF4003D755A /* ImageFeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -121,6 +127,7 @@
 		50EAA4DF2C58F52E003D755A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				50EAA4EB2C58FB7A003D755A /* ImageItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +164,13 @@
 				50EAA4C42C58EC3F003D755A /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		50EAA4EF2C58FFD7003D755A /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,11 +243,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50EAA4EC2C58FB7A003D755A /* ImageItem.swift in Sources */,
 				50EAA4E42C58F592003D755A /* ImageItemCell.swift in Sources */,
 				50EAA4D82C58F2AB003D755A /* DesignSystem.swift in Sources */,
 				50EAA4C72C58EC3F003D755A /* ImageFeedViewController.swift in Sources */,
 				50EAA4E12C58F54C003D755A /* ImageFeedDataSource.swift in Sources */,
 				50EAA4C32C58EC3F003D755A /* AppDelegate.swift in Sources */,
+				50EAA4EE2C58FEF4003D755A /* ImageFeedViewModel.swift in Sources */,
 				50EAA4DA2C58F363003D755A /* ImageFeedComposer.swift in Sources */,
 				50EAA4C52C58EC3F003D755A /* SceneDelegate.swift in Sources */,
 				50EAA4E82C58F61E003D755A /* ReuseIdentifier.swift in Sources */,

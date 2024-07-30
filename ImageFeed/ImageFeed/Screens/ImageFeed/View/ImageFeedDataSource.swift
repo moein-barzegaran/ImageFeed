@@ -8,8 +8,24 @@
 import UIKit
 
 final class ImageFeedDataSource: NSObject {
+    private let viewModel: ImageFeedViewModel
 
+    init(viewModel: ImageFeedViewModel) {
+        self.viewModel = viewModel
+
+        super.init()
+
+        viewModel.delegate = self
+    }
 }
+
+// MARK: ImageFeedViewModelDelegate
+
+extension ImageFeedDataSource: ImageFeedViewModelDelegate {
+    
+}
+
+// MARK: ImageFeedDataSource conforming to UICollectionViewDataSource
 
 extension ImageFeedDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

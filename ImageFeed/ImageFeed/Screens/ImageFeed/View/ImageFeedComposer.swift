@@ -36,6 +36,7 @@ struct ImageFeedComposer {
     }
 
     private static func makeDataSource() -> ImageFeedDataSource {
-        ImageFeedDataSource()
+        let viewModel = ImageFeedViewModel()
+        return ImageFeedDataSource(viewModel: viewModel)
     }
 }
