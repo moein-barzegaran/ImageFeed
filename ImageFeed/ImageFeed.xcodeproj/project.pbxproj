@@ -24,6 +24,10 @@
 		50EAA4F82C59017C003D755A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4F72C59017C003D755A /* HTTPMethod.swift */; };
 		50EAA4FA2C590191003D755A /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4F92C590191003D755A /* RequestError.swift */; };
 		50EAA4FD2C590204003D755A /* ImageFeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4FC2C590204003D755A /* ImageFeedEndpoint.swift */; };
+		50EAA5002C5902FA003D755A /* ImageFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4FF2C5902FA003D755A /* ImageFeedService.swift */; };
+		50EAA5032C590346003D755A /* ImageFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5022C590346003D755A /* ImageFeedResponse.swift */; };
+		50EAA5052C5909E9003D755A /* ImageItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5042C5909E9003D755A /* ImageItemDTO.swift */; };
+		50EAA5072C5909FD003D755A /* ImageDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5062C5909FD003D755A /* ImageDataDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		50EAA4F72C59017C003D755A /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		50EAA4F92C590191003D755A /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		50EAA4FC2C590204003D755A /* ImageFeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedEndpoint.swift; sourceTree = "<group>"; };
+		50EAA4FF2C5902FA003D755A /* ImageFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedService.swift; sourceTree = "<group>"; };
+		50EAA5022C590346003D755A /* ImageFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedResponse.swift; sourceTree = "<group>"; };
+		50EAA5042C5909E9003D755A /* ImageItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItemDTO.swift; sourceTree = "<group>"; };
+		50EAA5062C5909FD003D755A /* ImageDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,8 +187,10 @@
 		50EAA4EF2C58FFD7003D755A /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				50EAA5012C590338003D755A /* Models */,
 				50EAA4F02C5900C0003D755A /* Base */,
-				50EAA4FB2C5901E9003D755A /* Enspoints */,
+				50EAA4FB2C5901E9003D755A /* Endpoints */,
+				50EAA4FE2C5902D3003D755A /* Services */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -196,12 +206,30 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		50EAA4FB2C5901E9003D755A /* Enspoints */ = {
+		50EAA4FB2C5901E9003D755A /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
 				50EAA4FC2C590204003D755A /* ImageFeedEndpoint.swift */,
 			);
-			path = Enspoints;
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		50EAA4FE2C5902D3003D755A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				50EAA4FF2C5902FA003D755A /* ImageFeedService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		50EAA5012C590338003D755A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50EAA5022C590346003D755A /* ImageFeedResponse.swift */,
+				50EAA5042C5909E9003D755A /* ImageItemDTO.swift */,
+				50EAA5062C5909FD003D755A /* ImageDataDTO.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,9 +311,13 @@
 				50EAA4C72C58EC3F003D755A /* ImageFeedViewController.swift in Sources */,
 				50EAA4E12C58F54C003D755A /* ImageFeedDataSource.swift in Sources */,
 				50EAA4C32C58EC3F003D755A /* AppDelegate.swift in Sources */,
+				50EAA5002C5902FA003D755A /* ImageFeedService.swift in Sources */,
+				50EAA5072C5909FD003D755A /* ImageDataDTO.swift in Sources */,
+				50EAA5032C590346003D755A /* ImageFeedResponse.swift in Sources */,
 				50EAA4EE2C58FEF4003D755A /* ImageFeedViewModel.swift in Sources */,
 				50EAA4DA2C58F363003D755A /* ImageFeedComposer.swift in Sources */,
 				50EAA4C52C58EC3F003D755A /* SceneDelegate.swift in Sources */,
+				50EAA5052C5909E9003D755A /* ImageItemDTO.swift in Sources */,
 				50EAA4F82C59017C003D755A /* HTTPMethod.swift in Sources */,
 				50EAA4F42C590100003D755A /* Endpoint.swift in Sources */,
 				50EAA4E82C58F61E003D755A /* ReuseIdentifier.swift in Sources */,

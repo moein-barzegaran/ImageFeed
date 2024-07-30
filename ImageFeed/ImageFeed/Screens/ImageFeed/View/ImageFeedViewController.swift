@@ -18,15 +18,18 @@ final class ImageFeedViewController: UIViewController {
     }()
 
     private let layout: UICollectionViewLayout
+    private let viewModel: ImageFeedViewModel
     private let dataSource: ImageFeedDataSource
 
     // MARK: - Initializers
 
     init(
         layout: UICollectionViewLayout,
+        viewModel: ImageFeedViewModel,
         dataSource: ImageFeedDataSource
     ) {
         self.layout = layout
+        self.viewModel = viewModel
         self.dataSource = dataSource
 
         super.init(nibName: nil, bundle: nil)
@@ -42,6 +45,8 @@ final class ImageFeedViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+
+        viewModel.onAppearAction()
     }
 
     // MARK: - Private Methods
@@ -59,3 +64,14 @@ final class ImageFeedViewController: UIViewController {
     }
 }
 
+// MARK: - ImageFeedViewModelDelegate
+
+extension ImageFeedViewController: ImageFeedViewModelDelegate {
+
+}
+
+// MARK: - ImageFeedDataSourceDelegate
+
+extension ImageFeedViewController: ImageFeedDataSourceDelegate {
+
+}

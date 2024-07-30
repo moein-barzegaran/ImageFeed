@@ -7,22 +7,14 @@
 
 import UIKit
 
-final class ImageFeedDataSource: NSObject {
-    private let viewModel: ImageFeedViewModel
+protocol ImageFeedDataSourceDelegate: AnyObject {
 
-    init(viewModel: ImageFeedViewModel) {
-        self.viewModel = viewModel
-
-        super.init()
-
-        viewModel.delegate = self
-    }
 }
 
-// MARK: ImageFeedViewModelDelegate
+final class ImageFeedDataSource: NSObject {
 
-extension ImageFeedDataSource: ImageFeedViewModelDelegate {
-    
+    weak var dataSourceDelegate: ImageFeedDataSourceDelegate?
+
 }
 
 // MARK: ImageFeedDataSource conforming to UICollectionViewDataSource

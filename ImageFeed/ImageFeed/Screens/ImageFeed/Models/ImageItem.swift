@@ -8,7 +8,12 @@
 import Foundation
 
 struct ImageItem {
+    let id: Int
     let photographer: String
-    let portraitImageURL: String
-    let bannerImageURL: String
+    let data: ImageData
+}
+
+struct ImageData {
+    let original: String
+    let portrait: String
 }

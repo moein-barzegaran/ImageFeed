@@ -12,13 +12,14 @@ struct APIKey {
 }
 
 enum ImageFeedEndpoint {
-    case fetchList
+    case fetchList(page: Int, itemPerPage: Int)
 }
 
 extension ImageFeedEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .fetchList: return "/v1/curated"
+        case .fetchList:
+            return "/v1/curated"
         }
     }
 
@@ -33,6 +34,16 @@ extension ImageFeedEndpoint: Endpoint {
         switch self {
         case .fetchList:
             return ["Authorization": "\(APIKey.key)"]
+        }
+    }
+
+    var queryItems: [String: String]? {
+        switch self {
+        case let .fetchList(page, itemPerPage):
+            return [
+                "page": "\(page)",
+                "per_page": "\(itemPerPage)"
+            ]
         }
     }
 

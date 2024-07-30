@@ -20,6 +20,7 @@ extension HTTPClient {
         urlComponents.scheme = endpoint.scheme
         urlComponents.host = endpoint.host
         urlComponents.path = endpoint.path
+        urlComponents.queryItems = urlQueries(endpoint)
 
         guard let url = urlComponents.url else {
             return .failure(.invalidURL)
@@ -52,6 +53,10 @@ extension HTTPClient {
         } catch {
             return .failure(.unknown)
         }
+    }
+
+    private func urlQueries(_ endpoint: Endpoint) -> [URLQueryItem]? {
+        return endpoint.queryItems?.map({ URLQueryItem(name: $0.key, value: $0.value )})
     }
 }
 

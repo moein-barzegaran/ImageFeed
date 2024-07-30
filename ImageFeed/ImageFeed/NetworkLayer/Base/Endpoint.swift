@@ -14,6 +14,7 @@ protocol Endpoint {
     var method: HTTPMethod { get }
     var header: [String: String]? { get }
     var body: [String: String]? { get }
+    var queryItems: [String: String]? { get }
 }
 
 extension Endpoint {

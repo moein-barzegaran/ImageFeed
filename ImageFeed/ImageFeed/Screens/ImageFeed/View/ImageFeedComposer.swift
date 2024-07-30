@@ -9,7 +9,20 @@ import UIKit
 
 struct ImageFeedComposer {
     static func compose() -> ImageFeedViewController {
-        ImageFeedViewController(layout: makeLayout(), dataSource: makeDataSource())
+        let dataSource = ImageFeedDataSource()
+        let viewModel = ImageFeedViewModel(service: ImageFeedDataService())
+        let vc = ImageFeedViewController(
+            layout: makeLayout(), 
+            viewModel: viewModel,
+            dataSource: dataSource
+        )
+
+        // Set delegates
+
+        viewModel.delegate = vc
+        dataSource.dataSourceDelegate = vc
+
+        return vc
     }
 
     private static func makeLayout() -> UICollectionViewCompositionalLayout {
@@ -33,10 +46,5 @@ struct ImageFeedComposer {
 
             return section
         })
-    }
-
-    private static func makeDataSource() -> ImageFeedDataSource {
-        let viewModel = ImageFeedViewModel()
-        return ImageFeedDataSource(viewModel: viewModel)
     }
 }
