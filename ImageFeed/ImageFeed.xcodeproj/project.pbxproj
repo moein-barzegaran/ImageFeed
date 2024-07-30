@@ -23,6 +23,7 @@
 		50EAA4F62C59015E003D755A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4F52C59015E003D755A /* HTTPClient.swift */; };
 		50EAA4F82C59017C003D755A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4F72C59017C003D755A /* HTTPMethod.swift */; };
 		50EAA4FA2C590191003D755A /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4F92C590191003D755A /* RequestError.swift */; };
+		50EAA4FD2C590204003D755A /* ImageFeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA4FC2C590204003D755A /* ImageFeedEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		50EAA4F52C59015E003D755A /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		50EAA4F72C59017C003D755A /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		50EAA4F92C590191003D755A /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		50EAA4FC2C590204003D755A /* ImageFeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				50EAA4F02C5900C0003D755A /* Base */,
+				50EAA4FB2C5901E9003D755A /* Enspoints */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -191,6 +194,14 @@
 				50EAA4F92C590191003D755A /* RequestError.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		50EAA4FB2C5901E9003D755A /* Enspoints */ = {
+			isa = PBXGroup;
+			children = (
+				50EAA4FC2C590204003D755A /* ImageFeedEndpoint.swift */,
+			);
+			path = Enspoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +278,7 @@
 				50EAA4EC2C58FB7A003D755A /* ImageItem.swift in Sources */,
 				50EAA4E42C58F592003D755A /* ImageItemCell.swift in Sources */,
 				50EAA4F62C59015E003D755A /* HTTPClient.swift in Sources */,
+				50EAA4FD2C590204003D755A /* ImageFeedEndpoint.swift in Sources */,
 				50EAA4D82C58F2AB003D755A /* DesignSystem.swift in Sources */,
 				50EAA4C72C58EC3F003D755A /* ImageFeedViewController.swift in Sources */,
 				50EAA4E12C58F54C003D755A /* ImageFeedDataSource.swift in Sources */,
