@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ImageFeedViewModelDelegate: AnyObject {
-
+    func reloadData()
+    func inserRows(range: Range<Int>)
 }
 
 final class ImageFeedViewModel {
@@ -19,12 +20,21 @@ final class ImageFeedViewModel {
 
     weak var delegate: ImageFeedViewModelDelegate?
 
-    private let service: ImageFeedService
+    var triggerPointForNextPage: Int {
+        var total: Int
+        if currentPageNumber == 0 { total = Constants.itemInPage }
+        total = currentPageNumber * Constants.itemInPage
+        return total - 3
+    }
+
+    var imagesList: [ImageItem] = []
+    var imageLoader = ImageLoader()
 
     private var numberOfItemPerPage = Constants.itemInPage
     private var currentPageNumber: Int = 0
     private var totalResults: Int = 1000
-    private var imagesList: [ImageItem] = []
+
+    private let service: ImageFeedService
 
     // MARK: Initializer
 
@@ -38,9 +48,14 @@ final class ImageFeedViewModel {
         fetchImageFeed()
     }
 
-    func fetchImageFeed() {
+    func fetchNextPage() {
+        fetchImageFeed()
+    }
+
+    private func fetchImageFeed() {
         Task { [weak self] in
             guard let self else { return }
+            guard currentPageNumber * Constants.itemInPage <= totalResults else { return }
 
             let response = await service.fetchImagesList(
                 page: currentPageNumber + 1,
@@ -57,8 +72,11 @@ final class ImageFeedViewModel {
 
                 if self.currentPageNumber == 1 {
                     self.imagesList = photos
+                    self.delegate?.reloadData()
                 } else {
+                    let firstIndexToInsert = self.imagesList.count
                     self.imagesList.append(contentsOf: photos)
+                    self.delegate?.inserRows(range: (firstIndexToInsert..<self.imagesList.count))
                 }
 
             case .failure(let failure):

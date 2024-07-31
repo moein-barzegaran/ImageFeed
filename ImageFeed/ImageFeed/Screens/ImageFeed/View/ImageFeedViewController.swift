@@ -12,25 +12,22 @@ final class ImageFeedViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.dataSource = dataSource
+        collectionView.dataSource = self
         collectionView.register(ImageItemCell.self, forCellWithReuseIdentifier: ImageItemCell.identifier)
         return collectionView
     }()
 
     private let layout: UICollectionViewLayout
     private let viewModel: ImageFeedViewModel
-    private let dataSource: ImageFeedDataSource
 
     // MARK: - Initializers
 
     init(
         layout: UICollectionViewLayout,
-        viewModel: ImageFeedViewModel,
-        dataSource: ImageFeedDataSource
+        viewModel: ImageFeedViewModel
     ) {
         self.layout = layout
         self.viewModel = viewModel
-        self.dataSource = dataSource
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -67,11 +64,39 @@ final class ImageFeedViewController: UIViewController {
 // MARK: - ImageFeedViewModelDelegate
 
 extension ImageFeedViewController: ImageFeedViewModelDelegate {
+    func reloadData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
 
+    func inserRows(range: Range<Int>) {
+        let indexPathList = range.map({ IndexPath(row: $0, section: .zero )})
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.insertItems(at: indexPathList)
+        }
+    }
 }
 
-// MARK: - ImageFeedDataSourceDelegate
+// MARK: - UICollectionViewDataSource
 
-extension ImageFeedViewController: ImageFeedDataSourceDelegate {
+extension ImageFeedViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel.imagesList.count
+    }
 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ImageItemCell.identifier,
+            for: indexPath
+        ) as? ImageItemCell else { return UICollectionViewCell() }
+        cell.imageItemData = viewModel.imagesList[indexPath.row]
+        cell.imageLoader = viewModel.imageLoader
+
+        if indexPath.row == viewModel.triggerPointForNextPage {
+            viewModel.fetchNextPage()
+        }
+
+        return cell
+    }
 }

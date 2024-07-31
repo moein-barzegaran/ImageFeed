@@ -9,18 +9,14 @@ import UIKit
 
 struct ImageFeedComposer {
     static func compose() -> ImageFeedViewController {
-        let dataSource = ImageFeedDataSource()
         let viewModel = ImageFeedViewModel(service: ImageFeedDataService())
         let vc = ImageFeedViewController(
             layout: makeLayout(), 
-            viewModel: viewModel,
-            dataSource: dataSource
+            viewModel: viewModel
         )
 
         // Set delegates
-
         viewModel.delegate = vc
-        dataSource.dataSourceDelegate = vc
 
         return vc
     }

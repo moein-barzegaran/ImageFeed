@@ -10,3 +10,7 @@ import Foundation
 enum DefaultSpacing {
     static let space16: CGFloat = 16
 }
+
+enum DefaultRadius {
+    static let radius8: CGFloat = 8
+}
