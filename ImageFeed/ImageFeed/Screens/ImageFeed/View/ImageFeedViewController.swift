@@ -14,6 +14,7 @@ final class ImageFeedViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(ImageItemCell.self, forCellWithReuseIdentifier: ImageItemCell.identifier)
         return collectionView
     }()
@@ -50,6 +51,8 @@ final class ImageFeedViewController: UIViewController {
     // MARK: - Private Methods
 
     private func setupViews() {
+
+        title = "Image Feed"
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
 
@@ -57,7 +60,7 @@ final class ImageFeedViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: DefaultSpacing.space16),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -DefaultSpacing.space16),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: DefaultSpacing.space16),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -DefaultSpacing.space16)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -81,7 +84,7 @@ extension ImageFeedViewController: ImageFeedViewModelDelegate {
 
 // MARK: - UICollectionViewDataSource
 
-extension ImageFeedViewController: UICollectionViewDataSource {
+extension ImageFeedViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.imagesList.count
     }
@@ -99,5 +102,11 @@ extension ImageFeedViewController: UICollectionViewDataSource {
         }
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let imageData = viewModel.imagesList[indexPath.row]
+        let vc = ImageDetailComposer.compose(imageData: imageData, imageLoader: viewModel.imageLoader)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

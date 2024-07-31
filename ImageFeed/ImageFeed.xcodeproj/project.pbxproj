@@ -28,6 +28,9 @@
 		50EAA5052C5909E9003D755A /* ImageItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5042C5909E9003D755A /* ImageItemDTO.swift */; };
 		50EAA5072C5909FD003D755A /* ImageDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5062C5909FD003D755A /* ImageDataDTO.swift */; };
 		50EAA50A2C597569003D755A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5092C597569003D755A /* ImageLoader.swift */; };
+		50EAA50F2C5A4286003D755A /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA50E2C5A4286003D755A /* ImageDetailViewController.swift */; };
+		50EAA5112C5A439F003D755A /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5102C5A439F003D755A /* ImageDetailViewModel.swift */; };
+		50EAA5132C5A4440003D755A /* ImageDetailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAA5122C5A4440003D755A /* ImageDetailComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		50EAA5042C5909E9003D755A /* ImageItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItemDTO.swift; sourceTree = "<group>"; };
 		50EAA5062C5909FD003D755A /* ImageDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataDTO.swift; sourceTree = "<group>"; };
 		50EAA5092C597569003D755A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		50EAA50E2C5A4286003D755A /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		50EAA5102C5A439F003D755A /* ImageDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModel.swift; sourceTree = "<group>"; };
+		50EAA5122C5A4440003D755A /* ImageDetailComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 			children = (
 				50EAA4EA2C58F9DC003D755A /* App */,
 				50EAA4DB2C58F4FD003D755A /* Screens */,
+				50EAA4DF2C58F52E003D755A /* Models */,
 				50EAA4EF2C58FFD7003D755A /* NetworkLayer */,
 				50EAA4D62C58F28F003D755A /* DesignSystem */,
 				50EAA4E52C58F5F5003D755A /* Foundation */,
@@ -108,6 +115,7 @@
 		50EAA4DB2C58F4FD003D755A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				50EAA50B2C5A4248003D755A /* ImageDetail */,
 				50EAA4DC2C58F504003D755A /* ImageFeed */,
 			);
 			path = Screens;
@@ -116,7 +124,6 @@
 		50EAA4DC2C58F504003D755A /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
-				50EAA4DF2C58F52E003D755A /* Models */,
 				50EAA4DE2C58F51A003D755A /* ViewModel */,
 				50EAA4DD2C58F513003D755A /* View */,
 			);
@@ -240,6 +247,32 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		50EAA50B2C5A4248003D755A /* ImageDetail */ = {
+			isa = PBXGroup;
+			children = (
+				50EAA50C2C5A426D003D755A /* ViewModel */,
+				50EAA50D2C5A4273003D755A /* View */,
+			);
+			path = ImageDetail;
+			sourceTree = "<group>";
+		};
+		50EAA50C2C5A426D003D755A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				50EAA5102C5A439F003D755A /* ImageDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		50EAA50D2C5A4273003D755A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				50EAA50E2C5A4286003D755A /* ImageDetailViewController.swift */,
+				50EAA5122C5A4440003D755A /* ImageDetailComposer.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +347,7 @@
 				50EAA4EC2C58FB7A003D755A /* ImageItem.swift in Sources */,
 				50EAA4E42C58F592003D755A /* ImageItemCell.swift in Sources */,
 				50EAA4F62C59015E003D755A /* HTTPClient.swift in Sources */,
+				50EAA5132C5A4440003D755A /* ImageDetailComposer.swift in Sources */,
 				50EAA4FD2C590204003D755A /* ImageFeedEndpoint.swift in Sources */,
 				50EAA4D82C58F2AB003D755A /* DesignSystem.swift in Sources */,
 				50EAA4C72C58EC3F003D755A /* ImageFeedViewController.swift in Sources */,
@@ -325,10 +359,12 @@
 				50EAA4EE2C58FEF4003D755A /* ImageFeedViewModel.swift in Sources */,
 				50EAA4DA2C58F363003D755A /* ImageFeedComposer.swift in Sources */,
 				50EAA4C52C58EC3F003D755A /* SceneDelegate.swift in Sources */,
+				50EAA5112C5A439F003D755A /* ImageDetailViewModel.swift in Sources */,
 				50EAA5052C5909E9003D755A /* ImageItemDTO.swift in Sources */,
 				50EAA4F82C59017C003D755A /* HTTPMethod.swift in Sources */,
 				50EAA4F42C590100003D755A /* Endpoint.swift in Sources */,
 				50EAA4E82C58F61E003D755A /* ReuseIdentifier.swift in Sources */,
+				50EAA50F2C5A4286003D755A /* ImageDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
