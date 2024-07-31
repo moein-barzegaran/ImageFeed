@@ -12,6 +12,7 @@ final class ImageFeedViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.register(ImageItemCell.self, forCellWithReuseIdentifier: ImageItemCell.identifier)
         return collectionView
@@ -49,7 +50,7 @@ final class ImageFeedViewController: UIViewController {
     // MARK: - Private Methods
 
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([

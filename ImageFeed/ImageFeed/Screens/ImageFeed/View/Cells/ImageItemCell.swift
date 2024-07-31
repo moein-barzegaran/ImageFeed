@@ -18,6 +18,23 @@ final class ImageItemCell: UICollectionViewCell {
         return imageView
     }()
 
+    private lazy var photographerLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 11)
+        label.textAlignment = .left
+        label.textColor = .white
+        return label
+    }()
+
+    private lazy var transparentContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.35)
+        view.layer.cornerRadius = DefaultRadius.radius8
+        return view
+    }()
+
     var imageItemData: ImageItem? {
         didSet {
             updateUI()
@@ -48,12 +65,23 @@ final class ImageItemCell: UICollectionViewCell {
 
     private func setupViews() {
         contentView.addSubview(imageView)
+        transparentContainerView.addSubview(photographerLabel)
+        contentView.addSubview(transparentContainerView)
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            transparentContainerView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            transparentContainerView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            transparentContainerView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+
+            photographerLabel.topAnchor.constraint(equalTo: transparentContainerView.topAnchor, constant: DefaultSpacing.space8),
+            photographerLabel.bottomAnchor.constraint(equalTo: transparentContainerView.bottomAnchor, constant: -DefaultSpacing.space8),
+            photographerLabel.leadingAnchor.constraint(equalTo: transparentContainerView.leadingAnchor, constant: DefaultSpacing.space8),
+            photographerLabel.trailingAnchor.constraint(equalTo: transparentContainerView.trailingAnchor, constant: -DefaultSpacing.space8)
         ])
     }
 
@@ -65,6 +93,7 @@ final class ImageItemCell: UICollectionViewCell {
                 let image = try await self.imageLoader?.fetch(imageURL)
                 DispatchQueue.main.async {
                     self.imageView.image = image
+                    self.photographerLabel.text = imageItemData.photographer
                 }
             } catch {
                 print(error)
