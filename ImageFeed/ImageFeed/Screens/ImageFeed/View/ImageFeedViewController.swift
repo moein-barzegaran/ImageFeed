@@ -9,12 +9,19 @@ import UIKit
 
 final class ImageFeedViewController: UIViewController {
 
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
+        return refreshControl
+    }()
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.refreshControl = refreshControl
         collectionView.register(ImageItemCell.self, forCellWithReuseIdentifier: ImageItemCell.identifier)
         return collectionView
     }()
@@ -63,6 +70,11 @@ final class ImageFeedViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+
+    @objc private func pullToRefreshAction() {
+        refreshControl.beginRefreshing()
+        viewModel.pullToRefreshAction()
+    }
 }
 
 // MARK: - ImageFeedViewModelDelegate
@@ -70,11 +82,12 @@ final class ImageFeedViewController: UIViewController {
 extension ImageFeedViewController: ImageFeedViewModelDelegate {
     func reloadData() {
         DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.endRefreshing()
             self?.collectionView.reloadData()
         }
     }
 
-    func inserRows(range: Range<Int>) {
+    func insertRows(range: Range<Int>) {
         let indexPathList = range.map({ IndexPath(row: $0, section: .zero )})
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.insertItems(at: indexPathList)

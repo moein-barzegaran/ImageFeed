@@ -22,6 +22,10 @@ actor ImageLoader {
         return try await fetch(request)
     }
 
+    func clearCache() {
+        imageCache.removeAllObjects()
+    }
+
     private func fetch(_ urlRequest: URLRequest) async throws -> UIImage {
         if let status = images[urlRequest] {
             switch status {

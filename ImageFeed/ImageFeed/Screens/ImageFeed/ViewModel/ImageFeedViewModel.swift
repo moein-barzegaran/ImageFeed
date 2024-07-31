@@ -9,7 +9,7 @@ import Foundation
 
 protocol ImageFeedViewModelDelegate: AnyObject {
     func reloadData()
-    func inserRows(range: Range<Int>)
+    func insertRows(range: Range<Int>)
 }
 
 final class ImageFeedViewModel {
@@ -48,6 +48,14 @@ final class ImageFeedViewModel {
         fetchImageFeed()
     }
 
+    func pullToRefreshAction() {
+        Task { [weak self] in
+            await self?.imageLoader.clearCache()
+        }
+        currentPageNumber = .zero
+        fetchImageFeed()
+    }
+
     func fetchNextPage() {
         fetchImageFeed()
     }
@@ -76,7 +84,7 @@ final class ImageFeedViewModel {
                 } else {
                     let firstIndexToInsert = self.imagesList.count
                     self.imagesList.append(contentsOf: photos)
-                    self.delegate?.inserRows(range: (firstIndexToInsert..<self.imagesList.count))
+                    self.delegate?.insertRows(range: (firstIndexToInsert..<self.imagesList.count))
                 }
 
             case .failure(let failure):
